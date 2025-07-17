@@ -44,7 +44,7 @@ describe('TipRequestItem', function (): void {
                 expect($parameter->getType()?->getName())->toBe('float');
             }
         } catch (Exception $e) {
-            assert(false, 'Reflection failed: ' . $e->getMessage());
+            assert(false, 'Reflection failed: '.$e->getMessage());
         }
     });
 

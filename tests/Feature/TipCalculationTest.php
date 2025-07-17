@@ -12,7 +12,7 @@ describe('Tip Calculation Feature', function (): void {
             'bill' => 100.00,
             'tip' => 20.00,
         ]);
-        
+
         $response->assertStatus(200);
         $response->assertViewIs('tips.index');
         $response->assertViewHas([
@@ -34,7 +34,7 @@ describe('Tip Calculation Feature', function (): void {
             'bill' => 25.75,
             'tip' => 18.50,
         ]);
-        
+
         $response->assertStatus(200);
         $response->assertViewIs('tips.index');
         $response->assertViewHas('bill', 25.75);
@@ -54,7 +54,7 @@ describe('Tip Calculation Feature', function (): void {
 
     it('validates required fields', function (): void {
         $response = $this->post('/tip', []);
-        
+
         $response->assertStatus(302);
         $response->assertSessionHasErrors(['bill', 'tip']);
     });
@@ -64,7 +64,7 @@ describe('Tip Calculation Feature', function (): void {
             'bill' => 'invalid',
             'tip' => 20.00,
         ]);
-        
+
         $response->assertStatus(302);
         $response->assertSessionHasErrors(['bill']);
     });
@@ -74,7 +74,7 @@ describe('Tip Calculation Feature', function (): void {
             'bill' => 0,
             'tip' => 20.00,
         ]);
-        
+
         $response->assertStatus(302);
         $response->assertSessionHasErrors(['bill']);
     });
@@ -84,7 +84,7 @@ describe('Tip Calculation Feature', function (): void {
             'bill' => 100.00,
             'tip' => 'invalid',
         ]);
-        
+
         $response->assertStatus(302);
         $response->assertSessionHasErrors(['tip']);
     });
@@ -94,7 +94,7 @@ describe('Tip Calculation Feature', function (): void {
             'bill' => 100.00,
             'tip' => 0,
         ]);
-        
+
         $response->assertStatus(302);
         $response->assertSessionHasErrors(['tip']);
     });
@@ -104,7 +104,7 @@ describe('Tip Calculation Feature', function (): void {
             'bill' => 100.00,
             'tip' => 101.00,
         ]);
-        
+
         $response->assertStatus(302);
         $response->assertSessionHasErrors(['tip']);
     });
@@ -114,7 +114,7 @@ describe('Tip Calculation Feature', function (): void {
             'bill' => 0.01,
             'tip' => 20.00,
         ]);
-        
+
         $response->assertStatus(200);
         $response->assertViewIs('tips.index');
         $response->assertViewHas('bill', 0.01);
@@ -125,7 +125,7 @@ describe('Tip Calculation Feature', function (): void {
             'bill' => 100.00,
             'tip' => 1.00,
         ]);
-        
+
         $response->assertStatus(200);
         $response->assertViewIs('tips.index');
         $response->assertViewHas('tipPercent', 1.00);
@@ -136,7 +136,7 @@ describe('Tip Calculation Feature', function (): void {
             'bill' => 100.00,
             'tip' => 100.00,
         ]);
-        
+
         $response->assertStatus(200);
         $response->assertViewIs('tips.index');
         $response->assertViewHas('tipPercent', 100.00);
@@ -147,7 +147,7 @@ describe('Tip Calculation Feature', function (): void {
             'bill' => 33.33,
             'tip' => 18.75,
         ]);
-        
+
         $response->assertStatus(200);
         $response->assertViewIs('tips.index');
         $response->assertViewHas('bill', 33.33);
@@ -162,12 +162,12 @@ describe('Tip Calculation Feature', function (): void {
             ]);
             $response->assertStatus(200);
         }
-        
+
         $response = $this->post('/tip', [
             'bill' => 100.00,
             'tip' => 20.00,
         ]);
-        
+
         $response->assertStatus(429);
     });
 
@@ -176,7 +176,7 @@ describe('Tip Calculation Feature', function (): void {
             'bill' => 1.50,
             'tip' => 20.00,
         ]);
-        
+
         $response->assertStatus(200);
         $response->assertViewIs('tips.index');
         $response->assertViewHas('bill', 1.50);
@@ -195,7 +195,7 @@ describe('Tip Calculation Feature', function (): void {
             'bill' => 50.00,
             'tip' => 50.00,
         ]);
-        
+
         $response->assertStatus(200);
         $response->assertViewIs('tips.index');
         $response->assertViewHas('bill', 50.00);
@@ -215,14 +215,14 @@ describe('Tip Calculation Feature', function (): void {
             'bill' => 100.00,
             'tip' => 20.00,
         ]);
-        
+
         $response->assertStatus(200);
         $response->assertViewIs('tips.index');
     });
 
     it('can access home page', function (): void {
         $response = $this->get('/');
-        
+
         $response->assertStatus(200);
         $response->assertViewIs('welcome');
         $response->assertViewHas('tip');
@@ -230,7 +230,7 @@ describe('Tip Calculation Feature', function (): void {
 
     it('can access home page by route name', function (): void {
         $response = $this->get(route('home'));
-        
+
         $response->assertStatus(200);
         $response->assertViewIs('welcome');
     });

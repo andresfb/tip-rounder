@@ -29,7 +29,7 @@ describe('CalculateTipController', function (): void {
             $reflection = new ReflectionClass($controller);
             $method = $reflection->getMethod('__invoke');
         } catch (Exception $e) {
-            assert(false, 'Reflection failed: ' . $e->getMessage());
+            assert(false, 'Reflection failed: '.$e->getMessage());
         }
 
         expect($method->isPublic())->toBeTrue();
@@ -43,7 +43,7 @@ describe('CalculateTipController', function (): void {
             $reflection = new ReflectionClass($controller);
             $method = $reflection->getMethod('__invoke');
         } catch (Exception $e) {
-            assert(false, 'Reflection failed: ' . $e->getMessage());
+            assert(false, 'Reflection failed: '.$e->getMessage());
         }
         $parameters = $method->getParameters();
 
