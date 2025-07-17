@@ -1,10 +1,12 @@
 <?php
 
+declare(strict_types=1);
+
 namespace App\Dtos;
 
 use Spatie\LaravelData\Data;
 
-class TipResultsItem extends Data
+final class TipResultsItem extends Data
 {
     public function __construct(
         public readonly float $bill,
