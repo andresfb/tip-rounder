@@ -99,7 +99,7 @@ foreach ($hosts as $name => $ip) {
 task('env:pull', function () {
     $envBase = get('env_file');
     $envDir = get('local_env_dir');
-    $envFile = getenv('VAULT_HABITS_PATH').'/'.$envBase;
+    $envFile = getenv('VAULT_ROUNDER_PATH').'/'.$envBase;
     $localEnvPath = "$envDir/$envBase";
 
     if (! file_exists($localEnvPath)) {
