@@ -1,7 +1,18 @@
 <?php
 
+use App\Http\Controllers\CalculateTipController;
 use Illuminate\Support\Facades\Route;
 
-Route::get('/', function () {
-    return view('welcome');
+Route::middleware('throttle:30,2')->group(static function () {
+
+    Route::get('/', static function () {
+        $tip = (float) config('constants.base_tip_percentage');
+
+        return view('welcome', ['tip' => $tip]);
+    })
+        ->name('home');
+
+    Route::post('/tip', CalculateTipController::class)
+        ->name('tip');
+
 });
