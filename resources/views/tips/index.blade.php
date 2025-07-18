@@ -1,5 +1,5 @@
 <article class="content">
-    <div class="w-80 lg:w-96 bg-base-100">
+    <div class="w-80 lg:w-96">
         <ul class="list bg-base-100 shadow-sm rounded-box">
 
             <li class="p-4 pb-2 text-xs opacity-60 tracking-wide">Results</li>
