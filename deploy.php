@@ -57,6 +57,7 @@ set('cleanup_files', [
     'docs',
     'phpunit.xml',
     'README.md',
+    'CLAUDE.md',
     'LICENSE',
     'deploy.php',
     'peck.json',
@@ -135,7 +136,7 @@ task('storage:symlinks', function () {
     $releasePath = get('release_path');
 
     run("rm -rf $releasePath/storage/logs");
-    run("ln -sfn /server-logs/habits $releasePath/storage/logs");
+    run("ln -sfn /server-logs/rounder $releasePath/storage/logs");
 });
 
 desc('Composer install');
